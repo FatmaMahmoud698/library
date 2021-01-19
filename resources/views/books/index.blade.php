@@ -30,8 +30,10 @@
 		<p>{{$book->price}}</p>
 		<a href="{{route('showBook',$book->id)}}" class="btn btn-info">Show</a>
 		@auth
+        @if(Auth::user()->role=='admin')
 		<a href="{{route('editBook',$book->id)}}" class="btn btn-info">Edit</a>
 		<a href="{{route('deleteBook',$book->id)}}" class="btn btn-danger">Delete</a>
+        @endif
 		@endauth
 	@endforeach
 	<div class="my-5">

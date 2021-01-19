@@ -25,9 +25,11 @@
 		</a>
 		<a href="{{route('showCategory',$category->id)}}" class="btn btn-info">Show</a>
 		@auth
+        @if(Auth::user()->role=='admin')
 		<a href="{{route('editCategory',$category->id)}}" class="btn btn-info">Edit</a>
 		<a href="{{route('deleteCategory',$category->id)}}" class="btn btn-danger">Delete</a>
-		@endauth
+		@endif
+        @endauth
 	@endforeach
 	<div class="my-5">
 		{!! $categories->render() !!}

@@ -25,8 +25,10 @@
 			<h2>{{$author->name}}</h2>
 		</a>
 		<p>{{$author->bio}}</p>
+        @if(Auth::user()->role=='admin')
 		<a href="{{route('editAuthor',$author->id)}}" class="btn btn-info">Edit</a>
 		<a href="{{route('deleteAuthor',$author->id)}}" class="btn btn-danger">Delete</a>
+        @endif
 
 	@endforeach
 	<div class="my-5">

@@ -22,25 +22,26 @@ Route::middleware('UserAuth')->group(function(){
 	Route::get('/authors/create','AuthorController@create')->name('createAuthor');
 	Route::post('/authors/store','AuthorController@store')->name('storeAuthor');
 
-	//update 
-	Route::get('/authors/edit/{id}','AuthorController@edit')->name('editAuthor');
-	Route::Post('/authors/update/{id}','AuthorController@update')->name('updateAuthor');
 	//create
 	Route::get('/books/create','BookController@create')->name('createBook');
 	Route::post('/books/store','BookController@store')->name('storeBook');
 	Route::get('/categories/create','CategoryController@create')->name('createCategory');
 	Route::post('/categories/store','CategoryController@store')->name('storeCategory');
 
-	//update
-	Route::get('/books/edit/{id}','BookController@edit')->name('editBook');
-	Route::Post('/books/update/{id}','BookController@update')->name('updateBook');
-	Route::get('/categories/edit/{id}','CategoryController@edit')->name('editCategory');
-	Route::Post('/categories/update/{id}','CategoryController@update')->name('updateCategory');
 
 	//logout
 	Route::get('/logout','AuthController@logout')->name('authLogout');
 
 	Route::middleware('isAdmin')->group(function(){
+
+        //update
+        Route::get('/books/edit/{id}','BookController@edit')->name('editBook');
+        Route::Post('/books/update/{id}','BookController@update')->name('updateBook');
+        Route::get('/categories/edit/{id}','CategoryController@edit')->name('editCategory');
+        Route::Post('/categories/update/{id}','CategoryController@update')->name('updateCategory');
+        //update
+        Route::get('/authors/edit/{id}','AuthorController@edit')->name('editAuthor');
+        Route::Post('/authors/update/{id}','AuthorController@update')->name('updateAuthor');
 		//delete
 		Route::get('/books/delete/{id}','BookController@delete')->name('deleteBook');
 		//delete
