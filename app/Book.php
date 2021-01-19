@@ -11,4 +11,8 @@ class Book extends Model
      public function author(){
      	return $this->belongsTo('App\Author');
      }
+     //book belongs to many category
+     public function categories(){
+        return $this->belongsToMany('App\Category');
+    }
 }
