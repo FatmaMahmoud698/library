@@ -18,12 +18,14 @@ class AuthController extends Controller
     		'email'=>'required|email|max:100',
     		'password'=>'required|string|min:6'
     	]);
-    	User::create([
+    	$user=User::create([
     		'name'=>$request->name,
     		'email'=>$request->email,
     		'password'=>Hash::make($request->password),
     		'api_token'=>Str::random(64)
-    	]);
+        ]);
+        //login
+        Auth::login($user);
     	return redirect(route('allBooks'));
     }
     public function login(){
@@ -32,7 +34,7 @@ class AuthController extends Controller
     public function doLogin(Request $request){
     	$request->validate([
     		'email'=>'required|email|max:100',
-    		'password'=>'required|string|min:6'	
+    		'password'=>'required|string|min:6'
     	]);
 
     	if(! Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
